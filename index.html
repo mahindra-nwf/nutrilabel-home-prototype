@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NutriLabel</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="home.css">
+  <script>
+    // set the theme before first paint so dark mode doesn't flash
+    try { if (localStorage.getItem('nl_home_theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./">NutriLabel <small>Home</small></a>
+    <span class="spacer"></span>
+    <button class="btn ghost" id="themeBtn" title="Light / dark">☾</button>
+  </header>
+
+  <main class="home">
+    <h1>Where do you want to go?</h1>
+    <p class="lead">Pick an app to open. Each one keeps its own demo data in this browser.</p>
+
+    <div class="tiles">
+      <a class="tile" href="../nutrilabel-workspace-prototype/" style="--tile: var(--accent); --tile-soft: var(--accent-soft)">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        </span>
+        <h2>Workspace</h2>
+        <p>Your recipes and folders. Share with people, star, move and find anything.</p>
+        <span class="go">Open Workspace →</span>
+      </a>
+
+      <a class="tile" href="../nutrilabel-pantry-prototype/" style="--tile: var(--final); --tile-soft: var(--final-soft)">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v6H4zM4 14h16v6H4zM9 7h6M9 17h6"/></svg>
+        </span>
+        <h2>Pantry</h2>
+        <p>Raw materials: ingredients, packaging, suppliers, prices, nutrition and spec sheets.</p>
+        <span class="go">Open Pantry →</span>
+      </a>
+
+      <a class="tile" href="../nutrilabel-recipe-layout-v3/" style="--tile: var(--asm); --tile-soft: var(--asm-soft)">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="8.5" y="14" width="7" height="7" rx="1.5"/><path d="M6.5 10v2h11v-2M12 12v2"/></svg>
+        </span>
+        <h2>Recipe Builder</h2>
+        <p>Build a recipe from Pantry ingredients and see its nutrition label as you go.</p>
+        <span class="go">Open Recipe Builder →</span>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    const btn = document.getElementById('themeBtn');
+    const paint = () => { btn.textContent = document.documentElement.dataset.theme === 'dark' ? '☀' : '☾'; };
+    btn.onclick = () => {
+      const dark = document.documentElement.dataset.theme !== 'dark';
+      if (dark) document.documentElement.dataset.theme = 'dark'; else delete document.documentElement.dataset.theme;
+      try { localStorage.setItem('nl_home_theme', dark ? 'dark' : 'light'); } catch (e) {}
+      paint();
+    };
+    paint();
+  </script>
+</body>
+</html>

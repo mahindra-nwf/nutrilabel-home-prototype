@@ -1,0 +1,18 @@
+/* Home page styles. Colors only via base.css tokens. */
+.home { max-width: 1040px; margin: 0 auto; padding: 48px 16px 64px; }
+.home h1 { font-size: 26px; letter-spacing: -.3px; margin: 0 0 6px; }
+.home .lead { color: var(--muted); font-size: 14px; margin: 0 0 28px; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.tile { display: flex; flex-direction: column; gap: 8px; padding: 22px; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 14px; box-shadow: var(--shadow); color: var(--text); text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+.tile:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--tile); }
+.tile:focus-visible { outline: 2px solid var(--tile); outline-offset: 2px; }
+.tile .icon { width: 44px; height: 44px; border-radius: 11px; display: grid; place-items: center; background: var(--tile-soft); color: var(--tile); margin-bottom: 6px; }
+.tile .icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.tile h2 { font-size: 17px; margin: 0; }
+.tile p { color: var(--muted); font-size: 13px; line-height: 1.5; margin: 0; flex: 1; }
+.tile .go { color: var(--tile); font-weight: 600; margin-top: 8px; }
+
+@media (prefers-reduced-motion: reduce) { .tile { transition: none; } .tile:hover { transform: none; } }
